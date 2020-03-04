@@ -7,6 +7,7 @@ const observer: Observer<any> = {
 }
 
 const intervalos$ = new Observable<number>( subscriber => {
+    
     //Crear contador 1,2,3,4...
     let count = 0;
 
@@ -23,21 +24,21 @@ const intervalos$ = new Observable<number>( subscriber => {
 
     return () => {
         clearInterval(interval);
-        console.log('Intevalo destruido!');
-
-        
+        console.log('Intevalo destruido!'); 
     }
+
 });
 
 const subs = intervalos$.subscribe( observer );
 const subs2 = intervalos$.subscribe( observer );
 const subs3 = intervalos$.subscribe( observer );
 
+//Encadenado de subscripciones
 subs.add( subs2 )
     .add( subs3 );
     
 setTimeout( () => {
-    subs.unsubscribe();
+    subs.unsubscribe(); //Al estar encadenadas las subscripciones. El unsubscribe se ejecuta en cadena.
     // subs2.unsubscribe();
     // subs3.unsubscribe();
     
