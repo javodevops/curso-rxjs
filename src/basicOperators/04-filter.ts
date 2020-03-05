@@ -1,6 +1,11 @@
 import { range, from, fromEvent } from "rxjs";
 import { filter, map } from "rxjs/operators";
 
+/**
+ * filter - filtra los datos según una condición. 
+ */
+
+
 // range(1,10).pipe(
 //     filter( val => val % 2 === 1 )
 // ).subscribe( console.log );
@@ -38,6 +43,7 @@ from( personajes).pipe(
 ).subscribe( console.log );
 
 const keyup$ = fromEvent<KeyboardEvent>( document, 'keyup' ).pipe(
+    //Pipes encadenados
     map( event => event.code ), // recibe un KeyboardEvent, sale un string
     filter( key => key === 'Enter' )
 );
