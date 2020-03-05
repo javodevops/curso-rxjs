@@ -1,6 +1,9 @@
 import { range } from "rxjs";
 import { tap, map } from "rxjs/operators";
 
+/**
+ * tap - permite emitir un valor definido, ademas sirve para depurar datos.
+ */
 const numeros$ = range(1,5);
 
 numeros$.pipe(
