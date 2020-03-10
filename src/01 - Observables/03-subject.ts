@@ -1,5 +1,11 @@
 import { Observable, Observer, Subject } from "rxjs";
 
+/**
+ *  1. Casteo multiple / Muchas subscripciones suscritas al mismo observable
+ *  2. Tambien es un observer
+ *  3. Next, error y complete
+ */
+
 const observer: Observer<any> = {
     next: value => console.log('next:', value ),
     error: error => console.warn('error:', error ),
@@ -23,11 +29,7 @@ const intervalo$ = new Observable<number>( subs => {
 
 });
 
-/**
- *  1. Casteo multiple
- *  2. Tambien es un observer
- *  3. Next, error y complete
- */
+
 const subject$ = new Subject();
 const subscription = intervalo$.subscribe( subject$ );
 
