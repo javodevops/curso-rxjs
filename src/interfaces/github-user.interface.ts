@@ -15,7 +15,6 @@ export interface GithubUser {
     repos_url:           string;
     events_url:          string;
     received_events_url: string;
-    type:                Type;
     site_admin:          boolean;
     score:               number;
 }
