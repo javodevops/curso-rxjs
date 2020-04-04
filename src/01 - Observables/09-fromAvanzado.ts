@@ -2,7 +2,11 @@ import { from, of } from "rxjs";
 
 /**
  * of = toma argumentos y genera una secuencia
- * from = crea un observable en base a un array, promise, iterable, observable...
+ * 
+ * from = crea un observable en base a un Array, Promise, Iterable, Observable...
+ * 
+ * la ventaja de los Observables es que puedes controlar de mejor forma el flujo de datos,
+ * incluso puedes cancelarlos a diferencia de las Promesas.
  */
 
 const observer = {

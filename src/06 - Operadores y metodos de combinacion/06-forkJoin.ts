@@ -6,7 +6,7 @@ const interval$ = interval(1000).pipe( take( 3 ) );
 const letras$ = of('a', 'b', 'c');
 
 /**
- * forkJoin - Función que puedes recibir varios observables
+ * forkJoin - Función que puede recibir varios observables
  * retorna un observable que contiene la concatenación del último valor de cada subscrición.
  * Esto se genera unicamente cuando todas las subscripciones han sido completadas.
  */

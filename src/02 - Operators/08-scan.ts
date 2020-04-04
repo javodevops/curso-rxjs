@@ -9,13 +9,13 @@ const numeros = [1,2,3,4,5];
 
 const totalAcumulador = (acc, cur ) => acc + cur;
 
-// Reduce
+// Reduce - Emite un unico valor del acumulador cuando se completa el stream
 from( numeros ).pipe(
     reduce( totalAcumulador, 0)
 )
 .subscribe( console.log );
 
-// Scan
+// Scan - Cada vez que recibe un evento, scan emite un evento con el valor acumulado
 from( numeros ).pipe(
     scan( totalAcumulador, 0)
 )
@@ -35,6 +35,7 @@ const user: Usuario[] = [
     { id: 'barry', autenticado: true, token: 'ABC123' }
 ];
 
+// Tanto scan como reduce, pueden utilizar un tercer valor (seed) para inicializar el acumulado
 const state$ = from( user ).pipe(
     scan<Usuario>( (acc, cur) => {
         return { ...acc, ...cur }

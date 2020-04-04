@@ -1,5 +1,5 @@
 import { fromEvent } from "rxjs";
-import { map, takeWhile, tap } from "rxjs/operators";
+import { map, takeWhile, tap, last } from "rxjs/operators";
 
 const click$ = fromEvent<MouseEvent>( document, 'click');
 
@@ -12,7 +12,8 @@ click$.pipe(
      */
 
     // takeWhile( ({ y }) => y <= 150 )
-    takeWhile( ({ y }) => y <= 150, true )// Incluye y emite el valor que rompe el ciclo.
+    takeWhile( ({ y }) => y <= 150, true ) // Incluye y emite el valor que rompe el ciclo.
+    
 
 )
 .subscribe({

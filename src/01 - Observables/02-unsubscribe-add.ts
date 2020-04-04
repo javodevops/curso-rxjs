@@ -12,6 +12,7 @@ const intervalos$ = new Observable<number>( subscriber => {
     let count = 0;
 
     const interval = setInterval( () => {
+
         count++;
         subscriber.next( count );
         console.log(count);
@@ -38,7 +39,9 @@ subs.add( subs2 )
     .add( subs3 );
     
 setTimeout( () => {
-    subs.unsubscribe(); //Al estar encadenadas las subscripciones. El unsubscribe se ejecuta en cadena.
+
+    // Al estar encadenadas las subscripciones. El unsubscribe se ejecuta en cada una de ellas.
+    subs.unsubscribe(); 
     // subs2.unsubscribe();
     // subs3.unsubscribe();
     

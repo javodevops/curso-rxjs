@@ -1,6 +1,7 @@
 import { Observable, Observer, Subject } from "rxjs";
 
 /**
+ *  Subject
  *  1. Casteo multiple / Muchas subscripciones suscritas al mismo observable
  *  2. Tambien es un observer
  *  3. Next, error y complete

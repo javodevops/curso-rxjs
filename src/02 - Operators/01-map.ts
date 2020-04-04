@@ -4,6 +4,7 @@ import { map } from "rxjs/operators";
 /**
  * map - permite transformar lo que emite el observable en algo que queramos ocupar o extraer.
  */
+
 // range(1,5).pipe(
 //     // map<number, number>( val => val * 10 )
 //     map<number, string>( val => (val * 10).toString() )

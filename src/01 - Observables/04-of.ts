@@ -1,7 +1,9 @@
-import { of } from "rxjs";
+import { of, Observable } from "rxjs";
+
+import { scheduled } from "rxjs";
 
 /**
- * of - Función que permite crear observables en base a un listado de elementos.
+ * of - Función que permite crear secuencias de observables en base a un listado de elementos.
  */
 
  

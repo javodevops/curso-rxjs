@@ -1,27 +1,28 @@
-import { forkJoin, of } from "rxjs";
-import { ajax } from "rxjs/ajax";
-import { catchError } from "rxjs/operators";
+import { range, fromEvent } from "rxjs";
+import { map, pluck } from "rxjs/operators";
 
-const GITHUB_API_URL = 'https://api.github.com/users';
-const GITHUB_USER = 'klerith';
+/**
+ * pluck - permite extraer un valor especifico del objeto y definirlo como salida del observable.
+ */
 
-forkJoin({
-    usuario: ajax.getJSON(
-        `${GITHUB_API_URL}/${GITHUB_USER}`
-    ),
-    repos: ajax.getJSON(
-        `${GITHUB_API_URL}/${GITHUB_USER}/repos`
-    )/*.pipe(
-        catchError( err => of(err)) 
-        //Tambien se pueden controlar los errores de forma individual
-        //Así no se interrumpe la ejecución del código.
-    )*/,
-    gists: ajax.getJSON(
-        `${GITHUB_API_URL}/${GITHUB_USER}/gists`
-    )
-        
+// range(1,5).pipe(
+//     // map<number, number>( val => val * 10 )
+//     map<number, string>( val => (val * 10).toString() )
+// )
+// .subscribe( console.log);
 
-}).pipe(
-    catchError( err => of( err.message ))
-)
-.subscribe( console.log );
+const keyup$ = fromEvent<KeyboardEvent>( document, 'keyup' );
+
+//Mediante el map extraemos el codigo de la tecla presionada en el KeyboardEvent
+const keyupCode$ = keyup$.pipe(
+    map( event => event.code )
+);
+
+const keyupPluck$ = keyup$.pipe(
+    pluck('target', 'attributeStyleMap', 'size')
+    // Acceder a la propiedad dentro de una propiedad, similar a notación de puntos pero con comas
+);
+
+keyup$.subscribe( data => console.log('Evento: ', data) );
+keyupCode$.subscribe( code => console.log('map', code ));
+keyupPluck$.subscribe( code => console.log('pluck', code ));
